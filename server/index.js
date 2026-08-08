@@ -316,6 +316,7 @@ app.get("*", (_req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`CityPal API (Overpass + Nominatim, keyless) listening on http://localhost:${PORT}`);
+// Bind to 0.0.0.0 so Railway (and other container hosts) can reach the app.
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`CityPal API listening on 0.0.0.0:${PORT}`);
 });
