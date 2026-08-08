@@ -1,0 +1,13 @@
+{
+  "name": "citypal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CityPal — keyless Limassol tourist guide PWA (client + server)",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "cd client && npm install && npm run build && cd ../server && npm install",
+    "start": "node server/index.js"
+  }
+}

@@ -48,14 +48,28 @@ Open http://localhost:5173. The Vite dev server proxies `/api/*` to the backend.
 Edit `client/src/config.js` → `DEFAULT_LOCATION` (lat/lng of the hotel). This is
 the fallback used when the guest denies GPS permission.
 
-## Production (single deploy)
+## Production (single service)
+
+The Express server serves the built PWA **and** the API on one port, so it
+deploys as a single Node service. From the repo root:
 
 ```bash
-cd client && npm run build      # outputs client/dist
-cd ../server && npm start       # serves the built PWA + the API on one port
+npm run build      # installs deps + builds client/dist + installs server
+npm start          # node server/index.js  (serves the PWA + /api)
 ```
 
-Point the hotel QR code at the deployed URL. That's it.
+### Deploy on Railway
+
+1. Create a project → **Deploy from GitHub repo** → pick this repo.
+2. Railway auto-detects Node and runs `npm run build` then `npm start`
+   (from the root `package.json`). No env vars needed — the app is keyless.
+   Railway sets `PORT`; the server already reads it.
+3. Under the service → **Settings → Networking → Generate Domain** to get the
+   public HTTPS URL.
+4. Point the hotel QR code at that URL. Done — guests can open it and
+   "Add to Home Screen" on Android.
+
+Icons: `client/scripts/gen-icons.mjs` regenerates `icon-192.png` / `icon-512.png`.
 
 ## Text-to-speech notes
 

@@ -1,7 +1,7 @@
 {
   "name": "citypal-server",
   "version": "1.0.0",
-  "description": "Express proxy to the Foursquare Places API for the CityPal tourist PWA",
+  "description": "Express server for CityPal: serves the PWA and proxies OpenStreetMap (Overpass/Nominatim/OSRM)",
   "type": "module",
   "main": "index.js",
   "scripts": {
